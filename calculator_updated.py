@@ -59,15 +59,14 @@ class Calculator:
         self.create_equals_button()
         self.create_square_button()
         self.create_sqrt_button()
+        self.create_mode_button()
 
     # Creates labels for displaying the total expression and current expression
     def create_display_labels(self):
-        total_label = tk.Label(self.display_frame, text=self.total_expression, anchor=tk.E, bg=LIGHT_GRAY,
-                               fg=LABEL_COLOR, padx=24, font=SMALL_FONT_STYLE)
+        total_label = tk.Label(self.display_frame, text=self.total_expression, anchor=tk.E, bg=LIGHT_GRAY, fg=LABEL_COLOR, padx=24, font=SMALL_FONT_STYLE)
         total_label.pack(expand=True, fill='both')
 
-        label = tk.Label(self.display_frame, text=self.current_expression, anchor=tk.E, bg=LIGHT_GRAY,
-                         fg=LABEL_COLOR, padx=24, font=LARGE_FONT_STYLE)
+        label = tk.Label(self.display_frame, text=self.current_expression, anchor=tk.E, bg=LIGHT_GRAY, fg=LABEL_COLOR, padx=24, font=LARGE_FONT_STYLE)
         label.pack(expand=True, fill='both')
 
         return total_label, label
@@ -158,7 +157,7 @@ class Calculator:
     # creates equals button
     def create_equals_button(self):
         button = tk.Button(self.buttons_frame, text="=", bg=LIGHT_BLUE, fg=LABEL_COLOR, font=DEFAULT_FONT_STYLE, borderwidth=0, command=self.evaluate)
-        button.grid(row=4, column=3, columnspan=1, sticky=tk.NSEW)
+        button.grid(row=4, column=3, columnspan=1,rowspan=1, sticky=tk.NSEW)
     
     # defines backspace function
     def backspace(self):
@@ -182,6 +181,11 @@ class Calculator:
     # updates level for expression
     def update_label(self):
         self.label.config(text=self.current_expression[:11])
+
+    # create mode button which will be functioned afterwards
+    def create_mode_button(self):
+        button = tk.Button(self.buttons_frame, text="MODE",font=("time new roman",18,"bold"), bg=COLOR1, fg=LABEL_COLOR, borderwidth=0)
+        button.grid(row=4, column=4, sticky=tk.NSEW)
 
     def run(self):
         self.window.mainloop()
